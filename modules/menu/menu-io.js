@@ -12,8 +12,8 @@ var MenuIO;
             Element,
             Options         = {},
             ElementFuncs    = new ElementFuncsProto(),
-            ElementHeight,
             ElementWidth,
+            ElementHeight,
             ElementEvent,
             MenuFuncs       = {},
             TEMPLATE        = {
@@ -214,15 +214,20 @@ var MenuIO;
             if (widthInner < widthMenu + x) {
                 x -= widthMenu;
                 
-                if (x < 0)
-                    x = 0;
+                if (x < 0) {
+                  if (x < widthMenu) x = (widthInner - widthMenu)/2;
+                  else x = 0;
+                }
+                    
             }
             
             if (heightInner < heightMenu + y) {
                 y -= heightMenu;
                 
-                if (y < 0)
-                    y = 0;
+                if (y < 0) {
+                    if (y < heightMenu) y = (heightInner - heightMenu)/2;
+                    else y = 0;
+                }
             }
             
             if (isNumberX)
@@ -275,15 +280,15 @@ var MenuIO;
             
             if (!ElementHeight) {
                 styleComputed   = getComputedStyle(ElementMenu);
-                height          = styleComputed.height;
+                height           = styleComputed.height;
                 
                 ElementHeight   = parseInt(height, 10);
             }
-            
+                
             return ElementHeight;
         }
-        
-        function getMenuWidth() {
+
+         function getMenuWidth() {
             var styleComputed, width;
             
             if (!ElementWidth) {

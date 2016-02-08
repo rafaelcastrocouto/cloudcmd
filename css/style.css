@@ -20,7 +20,7 @@ body, pre, code {
 }
 
 .hidden {
-    display: none;
+    display: none !IMPORTANT;
 }
 
 .fm, .keyspanel {
@@ -93,11 +93,7 @@ a, a:visited, a:active {
 
 .fm.split .panel {
     width: calc(50% - 4px);
-}
-
-.fm.split .panel-right {
     display: block;
-    width: calc(50% - 4px);
 }
 
 .panel {
@@ -105,6 +101,13 @@ a, a:visited, a:active {
     height: 100%;
     padding: 8px 0;
     overflow: hidden;
+    opacity: 0.5;
+    display: none;
+}
+
+.panel.active {
+  opacity: 1;
+  display: block;
 }
 
 .panel-left {
@@ -112,7 +115,6 @@ a, a:visited, a:active {
 }
 
 .panel-right {
-    display: none;
     float:right;
 }
 

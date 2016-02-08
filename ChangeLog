@@ -1,14 +1,9 @@
-2016.02.06, v5.0.11
-
-feature:
-- (bower) menu v1.0.1
-- (bower) menu v1.0.0
-
-
 2016.02.04, v5.0.10
 
 fix:
+- chore(prefixer) add ";"
 - (server) socket path
+- test(cloudfunc) buildFromJSON: add prefix
 
 
 2016.02.02, v5.0.9
