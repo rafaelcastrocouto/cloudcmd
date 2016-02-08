@@ -1,25 +1,29 @@
 html {
-    height           : 94%;
+    height           : 100%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
     width               : 100%;
-    height              : 95%;
-    overflow            : hidden;
-    background-color    : white;
+    min-width           : 480px;
+    height              : 100%;
+    background-color    : white;    
 }
 
 body, pre, code {
     font-family     : "Droid Sans Mono", "Ubuntu Mono", "Consolas", monospace;
-    font-size       : 16px;
+    font-size       : 14px;
+    color: #222;
 }
 
 .hidden {
-    visibility: hidden;
+    display: none;
 }
 
 .fm, .keyspanel {
-     cursor              : default;
     -webkit-user-select : none;
     -moz-user-select    : none;
     -ms-user-select     : none;
@@ -32,22 +36,88 @@ body, pre, code {
     -moz-user-select    : initial;
     -ms-user-select     : initial;
     -o-user-select      : initial;
-    user-select         : text;
+}
+
+a, a:visited, a:active {
+    text-decoration:none;    
+    color : #444;    
+}
+
+*:focus {
+    outline: 0;
+}
+
+.reduce-text {
+    text-overflow   : ellipsis;
+    white-space     : nowrap;
+    overflow: hidden;
+}
+
+
+.keyspanel {
+  height: 50px;
+  padding: 10px;
 }
 
 .panel, .cmd-button {
     border: 1.5px solid;
-    border-color: rgb(49,123,249);
     border-color: rgba(49,123,249, 0.4);
+    border-radius: 4px;
 }
 
-.icon {
-    margin-left : 0.5%;
-    cursor: default;
+.cmd-button {
+    width: 30px;
+    height: 30px;        
+    background-color: white;
+    transition: ease 0.4s;
+    float: left;
+    margin-right: 4px;
+    cursor: pointer;
 }
 
-.icon:hover {
-    cursor: default;
+.cmd-button:hover {
+    border-color: #000;
+}
+
+.cmd-button:active {
+    color: white;
+    background-color: rgb(49,123,249);
+}
+
+.fm {
+    width : 100%;
+    height: calc(100% - 50px);
+    padding: 8px;
+    padding-top: 0;
+}
+
+.fm.split .panel {
+    width: calc(50% - 4px);
+}
+
+.fm.split .panel-right {
+    display: block;
+    width: calc(50% - 4px);
+}
+
+.panel {
+    width: 100%;
+    height: 100%;
+    padding: 8px 0;
+    overflow: hidden;
+}
+
+.panel-left {
+    float:left;
+}
+
+.panel-right {
+    display: none;
+    float:right;
+}
+
+.links-path, .fm-header {
+    padding-left: 8px;
 }
 
 .path-icon {
@@ -55,13 +125,20 @@ body, pre, code {
     color: #222;
 }
 
-.path-icon:active {
-    top: 1px;
-}
-
 .path-icon:hover {
     color : #06e;
-    cursor: pointer;
+}
+
+.links {
+    color: #888;
+}
+
+.links a {
+    color: #222;
+}
+
+.fm-header {
+    font-weight: bold;
 }
 
 .error::before {
@@ -89,62 +166,8 @@ body, pre, code {
     content     : attr(data-progress);
 }
 
-.cmd-button {
-    width: 5%;
-    height: 30px;
-    margin: 20px 2px 0 2px;
-    color: #222;
-    background-color: white;
-    transition: ease 0.1s;
-}
-
-.cmd-button:hover {
-    border: 1.5px solid;
-    transition: ease 0.5s;
-}
-
-.cmd-button:active {
-    color: white;
-    background-color: rgb(49,123,249);
-    transition: ease 0.1s;
-}
-
-.cmd-button:focus {
-    outline: 0;
-}
-
-.links a {
-    color: red;
-}
-
-.mini-icon {
-    position: relative;
-    top: 2px;
-    /* отступ перед картинкой 
-     * для нормального отображения
-     * рамки
-     */
-    left: -5px;
-    float: left;
-    width: 16px;
-    height: 16px;
-    margin-left: 6px;
-}
-
-.fm {
-    width : 97%;
-    height: 90%;
-    margin: 26px auto 0 auto;
-}
-.fm-header {
-    font-weight: bold;
-}
-
-.panel-left {
-    float:left;
-}
-
 .current-file {
+    background-color : rgba(220,220,255,0.4);
     box-shadow: 0 0 0 1.5px rgba(49, 123, 249, 0.4) inset;
 }
 
@@ -153,81 +176,63 @@ body, pre, code {
 }
 
 .selected-file, .selected-file .name > a {
-    color: rgb(254,159,224);
-}
-
-.panel-right {
-    float:right;
-}
-.panel {
-    width: 46%;
-    height: 97%;
-    padding: 1%;
+    background-color : rgba(220,220,255,0.2);
+    box-shadow: 0 0 0 1.5px rgba(49, 123, 249, 0.4) inset;
 }
 
 .selected-panel {
-    border-color: rgb(254, 159, 224);
-    border-color: rgba(254, 159, 224, .40);
+    border-color: rgba(254, 159, 224, .8);
 }
 
-.keyspanel {
-  text-align: center;
+.mini-icon {    
+    font            : 16px 'Fontello';
+    padding: 0 2px 1px 4px;
+    overflow: hidden;
+    width: 20px;
 }
 
 .name {
-    float: left;
-    width: 35%;
-}
-
-.name a:hover {
-    cursor: default;
+    width: calc(100% - 280px);
 }
 
 .size {
-    float:left;
-    width:16%;
-    margin-right: 27px;
+    width: 50px;
     text-align: right;
 }
 
 .owner {
-    display         : inline-block;
-    width           : 14%;
-    /* when inline-block
-     * vertical align should be
-     * set top to prevent additional
-     * spaces behind lines
-     */
-    vertical-align  : top;
+    margin-left: 2%;
+    width: 50px;
 }
 
 .mode {
-  float: right;
-  width: 23%;
-}
-
-.reduce-text {
-    overflow        : hidden;
-    text-overflow   : ellipsis;
-    white-space     : nowrap;
+  width: 100px;
 }
 
 .files {
-    height: 95%;
     padding: 0;
-    margin: 0;
-    overflow-y: auto;
+    margin: 0 0 0 2px;
     list-style-type: none;
+    height: calc(100% - 36px);   
 }
 
 .files li {
-    overflow: hidden;
+  padding: 2px;
 }
 
-a {
-  text-decoration:none;
+.files li:hover, .links a:hover {
+  cursor: pointer;
+  background-color : rgba(220,220,255,0.5);
 }
-a:hover, a:active {
-    color : #06e;
-    text-decoration:none;
+
+.files li span, .fm-header span {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.fm .icon-directory::before {
+  color: rgba(246, 224, 124, 0.8);
+}
+.fm .icon-file::before {
+  color: rgba(26, 224, 124, 0.8);
 }

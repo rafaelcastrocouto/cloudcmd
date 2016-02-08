@@ -30,14 +30,14 @@
     font-style      : normal;
     font-weight     : 400;
 }
-
+/*
 .directory {
     background-image:url('../img/dir.png');
 }
 .text-file {
     background-image:url('../img/txt.png');
 }
-
+*/
 .loading-svg {
     background      : url(../img/spinner.svg);
 }
